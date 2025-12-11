@@ -12,9 +12,7 @@ mkdir -p /var/www/html
 mount -t nfs 10.0.2.50:/wordpress /var/www/html
 # Añadir a /etc/fstab para montaje automático
 echo "10.0.2.50:/wordpress /var/www/html nfs defaults 0 0" >> /etc/fstab
-
-echo "=== Instalando WordPress ==="
-
+echo "Instalando WordPress"
 cd /tmp
 curl -O https://wordpress.org/latest.zip
 unzip latest.zip
