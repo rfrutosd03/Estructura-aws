@@ -16,7 +16,7 @@ Este proyecto despliega un CMS **WordPress** en alta disponibilidad y escalabili
 - **Función:** Ejecutar WordPress y servir contenido.
 - **Servicios:**
   - Dos servidores Apache con PHP-FPM.
-  - Un servidor NFS que exporta el directorio de WordPress (plugins, temas, uploads).
+  - Un servidor NFS que exporta el directorio de WordPress.
 - **Acceso:** Solo accesible desde la capa 1 (HTTP) y entre sí (NFS).
 - **Seguridad:** Grupo de seguridad permite tráfico HTTP desde capa 1 y NFS entre nodos.
 
@@ -51,15 +51,13 @@ Cada instancia se despliega con **aprovisionamiento.sh** que:
 - Configuran balanceo de carga en Apache (capa 1).
 - Montan NFS en los servidores de aplicación (capa 2).
 - Crean base de datos y usuario restringido a la subred de aplicación (capa 3).
-- Configuran `wp-config.php` con credenciales y claves seguras.
 
 ---
 
 ## <span style="color:purple">HTTPS y dominio</span>
 
 - **Elastic IP:** Asignado a la instancia de la capa 1.
-- **DNS:** El dominio público apunta al Elastic IP mediante un registro A.
-- **Certificados TLS:** Emitidos con Let’s Encrypt (Certbot) en la capa 1.
+- **DNS:** El dominio público apunta al Elastic IP mediante un registro A
 - **Redirección:** Todo el tráfico HTTP se redirige automáticamente a HTTPS.
 
 ---
@@ -67,9 +65,8 @@ Cada instancia se despliega con **aprovisionamiento.sh** que:
 ## <span style="color:darkcyan">Escalabilidad y alta disponibilidad</span>
 
 - **Aplicación:** Se pueden añadir más servidores Apache en la capa 2 y agregarlos al balanceador.
-- **NFS:** Para alta disponibilidad real, se recomienda sustituir por Amazon EFS.
 - **Base de datos:** Puede ampliarse con réplicas o clúster Galera.
-- **Balanceador:** Puede escalarse con múltiples instancias y DNS (Route 53) o sustituirse por un ALB gestionado.
+- **Balanceador:** Puede escalarse con múltiples instancias y DNS.
 
 ---
 
@@ -88,7 +85,6 @@ Cada instancia se despliega con **aprovisionamiento.sh** que:
 - Solo la capa 1 es accesible desde Internet.
 - La capa 3 (DB) está aislada y solo acepta tráfico desde la capa 2.
 - La comunicación entre capas está controlada por grupos de seguridad.
-- Certificados TLS aseguran la comunicación entre cliente y balanceador.
 
 ---
 
