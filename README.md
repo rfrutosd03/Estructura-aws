@@ -3,7 +3,7 @@
 Este proyecto despliega un CMS **WordPress** en alta disponibilidad y escalabilidad sobre Amazon Web Services (AWS), organizado en tres capas de infraestructura.
 
 ---
-## <span style="color:red">rfrutosd03@ddns.net</span>
+## <span style="color:red">rfrutosd03.ddns.net</span>
 ---
 ---
 ## <span style="color:blue">Arquitectura en tres capas</span>
