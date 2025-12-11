@@ -39,14 +39,14 @@ Este proyecto despliega un CMS **WordPress** en alta disponibilidad y escalabili
 - **NAT Gateway:** Permite salida a Internet desde las subredes privadas.
 - **Tablas de rutas:**
   - Pública → IGW.
-  - Privadas → NAT.
+  - Privadas → NAT (Una vez instalado el aprovisionamiento, podremos eliminar esta ruta)
 - **Grupos de seguridad:** Definidos para aislar tráfico entre capas.
 
 ---
 
 ## <span style="color:orange">Provisionamiento</span>
 
-Cada instancia se despliega con **scripts de shell (user data)** que:
+Cada instancia se despliega con **aprovisionamiento.sh** que:
 - Instalan y configuran Apache, PHP-FPM, NFS y MariaDB.
 - Configuran balanceo de carga en Apache (capa 1).
 - Montan NFS en los servidores de aplicación (capa 2).
@@ -95,20 +95,8 @@ Cada instancia se despliega con **scripts de shell (user data)** que:
 ## <span style="color:teal">Requisitos previos</span>
 
 - Cuenta AWS activa.
-- Dominio público registrado y gestionado en Route 53 o en tu registrador.
-- Claves de acceso IAM con permisos para EC2, VPC y Route 53.
-
----
-
-## <span style="color:darkred">Próximos pasos</span>
-
-- Desplegar instancias con los scripts de user data.
-- Validar conectividad entre capas.
-- Completar instalación de WordPress vía navegador.
-- Configurar backups y monitoreo.
-
----
+- Conectividad a los servicios aws
 
 ## Autor
 
-Proyecto diseñado para desplegar WordPress en alta disponibilidad en AWS, con enfoque en seguridad, escalabilidad y automatización.
+Ricardo Frutos Bravo
